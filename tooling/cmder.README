@@ -1,0 +1,26 @@
+Instalar la consola Cmder
+-------------------------
+Descomprime el archivo cmder_mini.zip en la carpeta en la que quieras tener instalado el programa. Por ejemplo C:\bin\
+
+
+Los siguientes pasos son opcionales, pero es muy practico poder abrir la consola directamente en la carpeta en la que 
+queramos desde el explorador de archivos de Windows, asi que te recomiendo que los sigas:
+
+Para poder abrir la consola Cmdr en cualquier carpeta desde el explorador de archivos (despues de instalar el programa). 
+	1. Haz doble click sobre el archivo OpenCmderHere.reg
+	2. Si aparece una ventana de confirmacion pidiendo permiso para hacer cambios en el sistema, 
+	   pulsa 'Si'
+	3. Aparecera otro mensaje avisando de los peligros que supone ejecutar este archivo
+	   Pulsa 'Si'
+	4. Aparecera otro mensaje avisando de que se han hecho los cambios en el registro del sistema.
+	   Pulsa 'Si'
+	5. Abre la ventana de configuracion del sistema de windows pulsando las teclas Windows + Pausa.
+	   Tambien puedes hacerlo yendo a Inicio y buscando la aplicacion Panel de Control. Una vez en el 
+	   Panel de Control de Windows pulsa en Sistema y Seguridad y despues en Sistema.
+	6. Pulsa en Configuracion Avanzada del Sistema
+	7. Selecciona la pestanya Avanzado
+ 	8. Pulsa el boton Variables de Entorno
+	9. Pulsa Nueva... en el recuadro de variables de entorno para tu usuario
+	10. Introduce CMDER_INSTALL_DIR en el campo Nombre de Variable
+	11. Introduce la ruta de la carpeta en la que instalaste Cmder (Ejemplo: C:\bin\cmder_mini) 
+	    en el campo Valor de la Variable 

@@ -3,7 +3,7 @@
 ## TODO:
 * Lo básico
     - [x] Reutilización
-    - [ ] Llamar, ejecutar, invocar
+    - [x] Llamar, ejecutar, invocar
     - [ ] Anatomía de una función  
         - [ ] Parámetros, argumentos y valores de retorno
         - [ ] Devolver y console.log()  
@@ -26,6 +26,15 @@ Una función es un bloque de código ejecutable al que podemos llamar en cualqui
 Crear funciones es otra forma de reutilizar código como los bucles, pero en vez de repetirse indefinidamente, su bloque de código se ejecuta una sola vez cuando las invocamos.
 
 En esencia lo que hacemos es ponerle un nombre a un grupo de líneas de código, de forma que después para ejecutarlo lo llamamos por ese nombre.
+
+
+### Reciclar no lo es todo
+
+Las funciones no son útiles sólo porque permitan reutilizar código. También se utilizan para agrupar bloques de código complejo que queremos mantener aparte de nuestro programa principal, porque desvían la atención a la hora de entender lo que hace nuestro código en líneas generales. Aunque sólo llamemos una vez a las funciones creadas con este objetivo, no desestimes esta opción cuando tu código se haga difícil de entender.
+
+Recuerda que el arte de programar consiste en resolver problemas analizándolos parte por parte, separando cada problema en partes más fáciles de entender, es decir, problemas más sencillos de resolver.
+
+Las primeros ejemplos que vamos a ver pertenecen a esta categoría, porque para ver la reutilización a través de funciones en todo su esplendor tendremos que crear programas más complejos. De todos modos veremos ejemplos de ambos tipos de funciones.
 
 ### El primer ejemplo
 Veamos un ejemplo. Esto es la definición de una función:
@@ -392,11 +401,6 @@ Crear funciones, en cierto modo, es añadir vocabulario al lenguaje de programac
 
 
 
-### Reciclar no lo es todo
-
-Como muestra el ejemplo anterior las funciones no son útiles sólo porque permitan reutilizar código. También se utiliza para agrupar bloques de código complejo que queremos mantener aparte de nuestro programa principal, porque desvían la atención a la hora de entender lo que hace nuestro código en líneas generales. Aunque sólo llamemos una vez a las funciones creadas con este objetivo, no desestimes esta opción cuando tu código se haga difícil de entender.
-
-Recuerda que el arte de programar consiste en resolver problemas analizándolos parte por parte, separando cada problema en partes más fáciles de entender, es decir, problemas más sencillos de resolver.
 
 
 

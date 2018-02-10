@@ -58,7 +58,9 @@ saludar();
 despedirse();
 ```
 
-Hemos definido dos funciones nada más empezar. Para definir una función, en su forma más simple:
+Hemos definido dos funciones nada más empezar. 
+
+**Para definir una función**, en su forma más simple:
 
 * Usamos la palabra clave `function`.
 * Escribimos el nombre que le queremos dar a la función.  
@@ -68,8 +70,7 @@ Hemos definido dos funciones nada más empezar. Para definir una función, en su
 * Escribimos el bloque de código que queremos que se ejecute cuando llamemos a la función.
 * Cerramos el bloque cerrando la llave `}`.
 
-Cuando se ejecuta el programa, el bloque de código dentro de estas funciones no se ejecuta todavía.
-Se guarda en la memoria para poder ser ejecutado más adelante.
+Cuando se ejecuta el programa, el bloque de código dentro de estas funciones no se ejecuta directamente. Se guarda en la memoria para poder ser ejecutado más adelante.
 
 En nuestro caso, ejecutamos el código dentro de la función `saludar` cuando llegamos a la linea:
 
@@ -77,8 +78,12 @@ En nuestro caso, ejecutamos el código dentro de la función `saludar` cuando ll
 saludar();
 ```
 
-Para ejecutar una funcíón escribimos su nombre seguido de paréntesis,`()`.  
+**Para ejecutar una funcíón** escribimos su nombre seguido de paréntesis,`()`.  
 Entonces el programa recuerda que habíamos definido una función con ese nombre y ejecuta el código dentro de ella.
+
+Te puedes preguntar: ¿Y cómo sabe el programa si quiero llamar a la función o quiero definir una nueva?
+
+Lo sabe por varias razones. La primera es que en esta línea de código no hemos escrito la palabra clave `function`. Además, detrás de los paréntesis no hay ningún bloque de código encerrado en llaves.
 
 ***Nota vocabulario:*** **llamar**, **invocar** y **ejecutar** son sinónimos cuando nos referimos a una función.
 
@@ -94,9 +99,12 @@ De nuevo el programa reconoce `despedirse` como el nombre de una función que ya
 
 ### Funciones con parámetros
 
-Bastante simple ¿no?. Vamos a complicarlo un poco. Supongamos que queremos un mensaje personalizado por cada usuario que ejecute el programa. Luego veremos como hacer llegar el nombre de usuarion a nuestro programa con Node.js
+Bastante simple ¿no?. Vamos a complicarlo un poco. 
 
-Cuando definimos una función podemos especificar que necesita información que no contiene, y que le será entregada como un valor en el momento en el que se la invoque.
+Supongamos que queremos un mensaje personalizado por cada usuario que ejecute el programa. Luego veremos como hacer llegar el nombre de usuario a nuestro programa con Node.js, de momento supongamos que ya lo tenemos en el programa.
+
+Cuando definimos una función podemos especificar que datos necesita y en que variables le será  entregada cuando se la invoque.
+
 Para recibir este valor ponemos el nombre de de la variable que queremos que lo contenga dentro de la función, dentro de los paréntesis:
 
 ```js

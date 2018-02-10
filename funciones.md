@@ -37,7 +37,7 @@ Recuerda que el arte de programar consiste en resolver problemas analizándolos 
 Las primeros ejemplos que vamos a ver pertenecen a esta categoría, porque para ver la reutilización a través de funciones en todo su esplendor tendremos que crear programas más complejos. De todos modos veremos ejemplos de ambos tipos de funciones.
 
 ### El primer ejemplo
-Veamos un ejemplo. Esto es la definición de una función:
+Esto es la definición de una función:
 
 ```js
 function saludar() {
@@ -45,8 +45,13 @@ function saludar() {
     console.log("Hoy hace un día precioso ¿No crees?");
 }
 ```
+Y esta es la sentencia que escribimos cuando queremos ejecutar la función `saludar`.
 
-Este ejemplo no es demasiado útil, pero imaginemos que `saludar` es lo primero que queremos que haga nuestra aplicación y 'despedirse' es lo último que queremos  que haga. El código de nuestro programa sería algo así:
+```js
+saludar();
+```
+
+Este ejemplo no es demasiado útil, pero imaginemos que `saludar` es lo primero que queremos que haga nuestra aplicación y `despedirse` es lo último que queremos  que haga. El código de nuestro programa sería algo así:
 
 ```js
 'use strict';
@@ -62,12 +67,30 @@ function despedirse() {
 
 saludar();
 
-// Hago de código realmente útil aquí
+// Hago de código realmente útil aquí ;P
 
 despedirse();
 ```
 
-Hemos definido dos funciones nada más empezar. 
+Hemos definido dos funciones nada más empezar. No es necesario que estén al principio del programa, pero de momento vamos a definir las funciones antes de usarlas.
+
+Después al llegar a la línea que dice
+
+```js
+saludar();
+```
+le estamos diciendo al progrma que recuerde el código dentro del bloque de la función definida como `saludar` y lo ejecute.
+
+Después se supone que tenemos la sección del programa que realmente hace algo, más allá de saludar y despedirse. No nos importa que hay aquí, ahora estamos hablando de las funciones `saludar` y `despedirse`
+
+Por último, tenemos la sentencia:
+
+```js
+despesdirse();
+```
+De nuevo el programa reconoce `despedirse` como el nombre de una función que ya está definida, ve que hay un doble paréntesis detrás y eso le indica que debe ejecutar el bloque de código dentro de la función.
+
+Creo que si lees el programa con atención podrás llegar a las siguientes conclusiones tu misma:
 
 **Para definir una función**, en su forma más simple:
 
@@ -76,34 +99,19 @@ Hemos definido dos funciones nada más empezar.
     (`saludar` y `despedirse` en este ejemplo)
 * Después abrimos y cerramos paréntesis `()`
 * Abrimos una llave, `{`.
-* Escribimos el bloque de código que queremos que se ejecute cuando llamemos a la función.
+* Escribimos el bloque de código que queremos que se ejecute cuando llamemos a la función. 
+  Fíjate en que el margen adicional del código dentro de la función ayuda a entender a simple vista que pertenece a la función. Te recomiendo que siempre escribas tus funciones siguiendo este formato.
 * Cerramos el bloque cerrando la llave `}`.
 
 Cuando se ejecuta el programa, el bloque de código dentro de estas funciones no se ejecuta directamente. Se guarda en la memoria para poder ser ejecutado más adelante.
 
-En nuestro caso, ejecutamos el código dentro de la función `saludar` cuando llegamos a la linea:
-
-```js
-saludar();
-```
 
 **Para ejecutar una funcíón** escribimos su nombre seguido de paréntesis,`()`.  
 Entonces el programa recuerda que habíamos definido una función con ese nombre y ejecuta el código dentro de ella.
 
-Te puedes preguntar: ¿Y cómo sabe el programa si quiero llamar a la función o quiero definir una nueva?
 
-Lo sabe por varias razones. La primera es que en esta línea de código no hemos escrito la palabra clave `function`. Además, detrás de los paréntesis no hay ningún bloque de código encerrado en llaves.
+***Nota de vocabulario:*** **llamar**, **invocar** y **ejecutar** son sinónimos cuando nos referimos a una función.
 
-***Nota vocabulario:*** **llamar**, **invocar** y **ejecutar** son sinónimos cuando nos referimos a una función.
-
-Después se supone que nuestro programa contiene unas cuantas de líneas de código realmente útil, como indica el comentario. 
-Imaginemos que la parte útil de nuestro código ya se a ejecutado. Por último, tenemos la sentencia:
-
-```js
-despesdirse();
-```
-
-De nuevo el programa reconoce `despedirse` como el nombre de una función que ya está definida, ve que hay un doble paréntesis detrás y eso le indica que debe ejecutar el bloque de código dentro de la función.
 
 
 ### Funciones con parámetros

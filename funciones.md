@@ -62,7 +62,7 @@ Hemos definido dos funciones nada más empezar. Para definir una función, en su
 
 * Usamos la palabra clave `function`.
 * Escribimos el nombre que le queremos dar a la función.  
-    ('saludar' y `despedirse` en este ejemplo)
+    (`saludar` y `despedirse` en este ejemplo)
 * Después abrimos y cerramos paréntesis `()`
 * Abrimos una llave, `{`.
 * Escribimos el bloque de código que queremos que se ejecute cuando llamemos a la función.
@@ -80,7 +80,7 @@ saludar();
 Para ejecutar una funcíón escribimos su nombre seguido de paréntesis,`()`.  
 Entonces el programa recuerda que habíamos definido una función con ese nombre y ejecuta el código dentro de ella.
 
-Nota vocabulario: En programación **llamar**, **invocar** y **ejecutar** son sinónimos cuando nos referimos a una función.
+***Nota vocabulario:*** **llamar**, **invocar** y **ejecutar** son sinónimos cuando nos referimos a una función.
 
 Después se supone que nuestro programa contiene unas cuantas de líneas de código realmente útil, como indica el comentario. 
 Imaginemos que la parte útil de nuestro código ya se a ejecutado. Por último, tenemos la sentencia:
@@ -94,7 +94,7 @@ De nuevo el programa reconoce `despedirse` como el nombre de una función que ya
 
 ### Funciones con parámetros
 
-Bastante simple ¿no?. Vamos a complicarlo un poco. Supongamos que queremos un mensaje personalizado y que el usuario introduce su nombre cuando ejecuta el programa.
+Bastante simple ¿no?. Vamos a complicarlo un poco. Supongamos que queremos un mensaje personalizado por cada usuario que ejecute el programa. Luego veremos como hacer llegar el nombre de usuarion a nuestro programa con Node.js
 
 Cuando definimos una función podemos especificar que necesita información que no contiene, y que le será entregada como un valor en el momento en el que se la invoque.
 Para recibir este valor ponemos el nombre de de la variable que queremos que lo contenga dentro de la función, dentro de los paréntesis:
@@ -157,7 +157,7 @@ Pero recuerda que cuando escribimos el nombre de una variable que ya ha sido def
 
 Esta es una manera muy conveniente de ir pasando valores de un lado a otro del programa.
 
-Si queremos añadirle un toque elegante a nuestro programa podemos utilizar el nombre que introduzca el usuario al ejecutarlo con node.
+Si queremos añadirle un toque elegante a nuestro programa podemos utilizar el nombre que introduzca el usuario al ejecutarlo con Node.js
 
 En vez de empezar el programa con
 
@@ -182,9 +182,9 @@ Y el nombre de usuario viajará mágicamente desde la línea de comandos hasta e
 
 [aside c="true" t="unrelated" subject="<code>process.argv</code>"]
 
-##### Pasarle valores a un programa con node al ejecutarlo
+##### Pasarle valores a un programa con Node.js al ejecutarlo
 
-Con node.js podemos pasar valores al programa que queremos ejecutar detrás del nombre del mismo. Estos valores se almacenan en la propiedad `argv` (un array) del objeto global `process`.
+Con Node.js podemos pasar valores al programa que queremos ejecutar detrás del nombre del mismo. Estos valores se almacenan en la propiedad `argv` (un array) del objeto global `process`.
 
 El primer elemento de este array será siempre `"node"`, el segundo la ruta completa del programa en el sistema de archivos, y a partir del tercero tendría almacenadas cada una de las palabras que escribiéramos detrás del nombre del programa. Por ejemplo si ejecutamos nuestro programa así:
 
@@ -456,7 +456,7 @@ La expresión 'new Date()` que utiliza el ejemplo es un poco especial y no la he
 
 `new` se utiliza para invocar la función constructora de un prototipo de objeto para crear copias del mismo. En este caso la del objeto `Date`.  Hablaremos más adelante de `new`y de los prototipos de objeto.
 
-También conviene que sepas que `Date` no forma parte del lenguaje javascript, sino que forma parte de una de las librerías que node (o cualquier navegador) pone a nuestra disposición directamente, como `Math` o `console`.
+También conviene que sepas que `Date` no forma parte del lenguaje javascript, sino que forma parte de una de las librerías que Node.js (o cualquier navegador) pone a nuestra disposición directamente, como `Math` o `console`.
 
 [/aside]
 

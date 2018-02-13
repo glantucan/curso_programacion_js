@@ -1,29 +1,42 @@
-# Funciones en Javascript
+Funciones en Javascript
 
-## TODO:
+TODO:
 * Lo básico
     - [x] Reutilización
     - [x] Llamar, ejecutar, invocar
     - [ ] Anatomía de una función  
         - [ ] Parámetros, argumentos y valores de retorno
-        - [ ] Devolver y console.log()  
-- [ ] Ámbito  
-    - [ ] Definir funciones al principio o al final da lo mismo
-    - [ ] ambito de variables
-    - [ ] funciones dentro de otras
-- [ ] Por valor y por referencia  
-- [ ] Componiendo funciones
-- [ ] Declarar una función dentro de una expresión
-- [ ] Pasando y devolviendo funciones.  
-- [ ] Clausuras  
+        - [ ] Devolver y console.log()
+    - [ ] Ámbito  
+        - [ ] Definir funciones al principio o al final da lo mismo
+        - [ ] ambito de variables sin anidar
+  
+---  
 
+<!-- TOC -->
 
-## 1. Lo básico
+- [1. Lo Fundamental](#1-lo-fundamental)
+    - [Reciclar es importante](#reciclar-es-importante)
+    - [Reciclar no lo es todo](#reciclar-no-lo-es-todo)
+- [2.- Una función muy sencilla](#2--una-función-muy-sencilla)
+        - [Ejercicios de funciones simples](#ejercicios-de-funciones-simples)
+- [3.- Funciones con parámetros](#3--funciones-con-parámetros)
+            - [Pasarle valores a un programa con Node.js al ejecutarlo](#pasarle-valores-a-un-programa-con-nodejs-al-ejecutarlo)
+    - [Funciones con más de un parámetro](#funciones-con-más-de-un-parámetro)
+- [4.- Funciones que devuelven un valor](#4--funciones-que-devuelven-un-valor)
+    - [Recapitulación](#recapitulación)
+    - [EJERCICIOS](#ejercicios)
+- [5. Reglas de ámbito (1ª parte)](#5-reglas-de-ámbito-1ª-parte)
+- [6.- Ejercicios del tema](#6--ejercicios-del-tema)
+
+<!-- /TOC -->
+
+## 1. Lo Fundamental
 
 Una función es un bloque de código ejecutable al que podemos llamar en cualquier momento, cada vez que lo necesitemos.
 
 ### Reciclar es importante
-Crear funciones es otra forma de reutilizar código como los bucles, pero en vez de repetirse indefinidamente, su bloque de código se ejecuta una sola vez cuando las invocamos.
+Crear funciones es otra forma de reutilizar código, como los bucles, pero en vez de repetirse indefinidamente, su bloque de código se ejecuta una sola vez cuando las invocamos.
 
 En esencia lo que hacemos es ponerle un nombre a un grupo de líneas de código, de forma que después para ejecutarlo lo llamamos por ese nombre.
 
@@ -36,7 +49,7 @@ Recuerda que el arte de programar consiste en resolver problemas analizándolos 
 
 Las primeros ejemplos que vamos a ver pertenecen a esta categoría, porque para ver la reutilización a través de funciones en todo su esplendor tendremos que crear programas más complejos. De todos modos veremos ejemplos de ambos tipos de funciones.
 
-### El primer ejemplo
+## 2.- Una función muy sencilla
 Esto es la definición de una función:
 
 ```js
@@ -112,9 +125,21 @@ Entonces el programa recuerda que habíamos definido una función con ese nombre
 
 ***Nota de vocabulario:*** **llamar**, **invocar** y **ejecutar** son sinónimos cuando nos referimos a una función.
 
+Actualizaremos estas instrucciones más adelante pero de momento lo dejamos así.
 
 
-### Funciones con parámetros
+#### Ejercicios de funciones simples
+
+Vamos a practicar un poco:
+
+1. Escribe una función que ...
+2. Escribe una función que ...
+3. Escribe una función que ...
+4. Escribe una función que ...
+
+
+
+## 3.- Funciones con parámetros
 
 Bastante simple ¿no?. Vamos a complicarlo un poco. 
 
@@ -122,13 +147,15 @@ Supongamos que queremos un mensaje personalizado por cada usuario que ejecute el
 
 Cuando definimos una función podemos especificar que datos necesita y en que variables le será  entregada cuando se la invoque.
 
-Para recibir este valor ponemos el nombre de de la variable que queremos que lo contenga dentro de la función, dentro de los paréntesis:
+Para recibir este valor ponemos el nombre de la variable que queremos que lo contenga dentro de la función, dentro de los paréntesis:
 
 ```js
 function saludar(usuario) { //...
 ```
 
-Esto es equivalente a definir la variable `usuario` con `var`. 
+Esto es equivalente a definir la variable `usuario`. Es como si escribiéramos `function  saludar(` **`var usuario`** `) { // ...`. ¡¡¡Si hiciéramos esto el programa provocaría un error, cuidado!!!  
+Si te lo escribo así es sólo para que entiendas cláramente lo que está pasando.
+
 Así podemos utilizar esa variable dentro de la función:
 
 ```js
@@ -137,13 +164,16 @@ function saludar(usuario) {
     console.log("Hoy hace un día precioso ¿No crees?");
 }
 ```
-En este contexto, `usuario` es una variable, pero se le llama parámetro de la función.
+En este contexto, `usuario` es una variable, como decía pero se le llama parámetro. Porque estamos parametrizando la función. La función producirá diferentes resultados al darle diferentes valores a ese parámetro.
 
-Cuando llamamos a la función podemos pasarle el valor para ese parámetro dentro de los paréntesis
+Cuando llamamos a la función podemos pasarle el valor a ese parámetro dentro de los paréntesis
 
 ```js
 saludar("Oscar");
 ```
+
+De nuevo, para que nos entendamos, aunque no sea correcto y provoque un error si se escribe dentro de  un programa real, esto viene a ser como si escribieramos `saludar(usuario = "Oscar")`.
+
 Ese valor será asignado al parámetro de la función de forma que ahora el mensaje de bienvenida que se mostrará es:
 
 ```
@@ -153,7 +183,7 @@ Hoy hace un día precioso ¿No crees?
 
 Al valor que le pasamos a una función se le llama argumento.
 
-Aplicando esto a la otra función nuestro programa quedaría así:
+Veamos como quedaría el programa parametrizando ambas funciones, `saludar` y `despedirse`:
 
 ```js 
 'use strict';
@@ -176,11 +206,10 @@ saludar(nombreUsuario);
 despedirse(nombreUsuario);
 ```
 
-Fíjate en que en programa completo en vez de pasarle a la función un valor literal cuando la llamamos, parece que le estamos pasando el valor de una variablemente previamente definida y asignada. 
+Fíjate en que en el programa completo en vez de pasarle a la función un valor literal cuando la llamamos, parece que le estamos pasando una variable `usuario`.
 
-Pero recuerda que cuando escribimos el nombre de una variable que ya ha sido definida dentro de una expresión (salvo si es a la izquierda de una asignación) lo que estamos haciendo es evaluar la variable, es decir devolver su valor. 
 
-Esta es una manera muy conveniente de ir pasando valores de un lado a otro del programa.
+Pero recuerda que cuando escribimos el nombre de una variable dentro de una expresión (salvo si es a la izquierda de una asignación) lo que estamos haciendo es evaluar la variable, es decir devolver su valor. Esta es una manera muy conveniente de ir pasando valores de un lado a otro del programa.
 
 Si queremos añadirle un toque elegante a nuestro programa podemos utilizar el nombre que introduzca el usuario al ejecutarlo con Node.js
 
@@ -227,7 +256,8 @@ var edad = process.argv[3];    // "43"
 ```
 [/aside]
 
-## Funciones con más de un parámetro
+
+### Funciones con más de un parámetro
 
 Vamos a sofisticar nuestro sistema de login un poco más. Hagamos que sólo pueda ejecutarse si el usuario introduce una contraseña. 
 
@@ -263,7 +293,13 @@ esUsuarioAcreditado("Oscar", "1234", usuariosRegistrados);
 // ...
 ```
 
-Fíjate en que los dos primeros argumentos son valores literales, mientras que el tercero es el nombre de una variable definida al principio del programa. Como te he expplicado antes, podemos pasar a una función valores literales o la evaluación de una variable. En cualquier caso la función recibirá los valores, tanto si eran literales como si son el resultado de evaluar una variable. 
+Como ves, al llamar a la función, estoy pasándole los argumentos en el mismo orden en el que están definidos los parámetros. Esto siempre debe ser así. Javascript no sabe lo que significa cada parámetro y no tiene otra forma de asignar el valor correcto acada parámetro.
+
+Fíjate en que los dos primeros argumentos son valores literales, mientras que el tercero es el nombre de una variable definida al principio del programa. Como te he expplicado antes, podemos pasar a una función valores literales o la evaluación de una variable. En cualquier caso la función recibirá los valores, tanto si eran literales como si son el resultado de evaluar una variable.
+
+El listado siguiente, muestra una de las posibles formas de implementar un login con contraseña. No es la forma más elegante como veremos más adelante, pero nos vale por ahora. Símplemente definimos la función `esUsuarioAcreditado` y la ejecutamos antes de llamar a las otras funciones que ya teníamos definidas.
+
+Esta nueva función echará al usuario del programa usando la función predefinida `process.exit()` de Node.js.
 
 
 ```js
@@ -318,6 +354,12 @@ saludar(nombreUsuario);
 despedirse(nombreUsuario);
 ```
     
+## 4.- Funciones que devuelven un valor
+
+...
+
+Estrictamente hablando, las funciones siempre devuelven un valor. Si no escribimos una sentencia `return ...` que devuelva un valor, la función devolverá el valor `undefined` por defecto.  
+
 
 
 Como ves no tenemos que volver a escribir el cálculo para cada una de ellas, llamamos a la función por su nombre y le pasamos entre paréntesis el valor que XXX
@@ -406,130 +448,81 @@ Probablemente en un juego real esta función haría mucho más que eso, y suele 
 Crear funciones, en cierto modo, es añadir vocabulario al lenguaje de programación. Un vocabulario que nos ayuda a escribir y entender la lógica del programa. Por eso es tan importante que elijas bien el nombre de tus funciones. Si haces esto bien, no tendrás que ir a buscar la definición de cada función, para ver que hace, cuando la veas escrita en una línea del programa.
 
 
+### Recapitulación
 
 
+**Para definir una función**:
+
+* Usamos la palabra clave `function`.
+* Escribimos el nombre que le queremos dar a la función.
+* Después abrimos y cerramos paréntesis `()`.  
+    Si queremos que la función reciba valores de entrada, escribiremos el nombre de los parámetros que los reciben entre estos paréntesis y separados por comas.
+* Abrimos una llave, `{`.
+* Escribimos el bloque de código que queremos que se ejecute cuando llamemos a la función. 
+  Recuerda añadir un margen adicional (un tabulador) a la izquierda de todas las sentencias que escribas dentro de este bloque. Así te será más fácil distinguir que código se ejecutará cuando llames a la función
+* Cerramos el bloque cerrando la llave `}`.
+
+**Para ejecutar una funcíón** escribimos su nombre seguido de paréntesis,`()`. 
+
+* Si la función tiene parámetros definidos y no le pasamos valores, esos parámetros tomarán el valor `undefined`
+* Si la función tiene parámetros definidos podemos pasarle los valores para esos parámetros dentro de los paréntesis, separados por comas, y en el mismo orden que los parámetros.
+* El valor que devuelve la función (`undefined` si no devolvemos uno explícitamente con una sentencia `return ...`) reemplazará el lugar que ocupa la llamada a la función y será evaluado en ese contexto.  
+    Por ejemplo: Si la llamada a la función está a la derecha de una expresión de asignación el valor devuelto por la función será asignado a la variable.
 
 
-
-
-## X. Funciones puras
-
-Mira este ejemplo:
-
-```js
-function aplicarImpuestos(totalFactura) {
-    var iva = 21;
-    var irpf = 18;
-    return cantidad * ( 1 + iva - irpf);
-}
-
-var totalFactura_1 = aplicarImpuestos(1000);  // 1030
-var totalFactura_2 = aplicarImpuestos(340);   // 350.2
-var totalFactura_3 = aplicarImpuestos(2735);  // 2817.05
-```
-
-Las primeras 5 líneas de código *definen* la función `aplicarImpuestos`. Una vez definida podemos llamarla por su nombre para sumar el IVA y restar el IRPF en cada una de nuestras facturas.
-
-En cada una de las últimas 3 líneas de código estamos llamando a esa función para aplicar esos impuestos a los totales de tres facturas diferentes.
- 
-La instrucción ´return´ se encarga de devolver el valor calculado de forma que podamos asignarlo a una variable.
-
-En este ejemplo el bloque de código realiza una transformación del valores que recibe y devuelve el resultado. 
-En este sentido, esta es una función bastante parecidas a las funciones matemáticas. Por ejemplo la función *f(x) = x<sup>2</sup>* transforma cada valor *x* que le damos en otro valor que es el cuadrado del anterior.
-
-Una función que transforma los valores que recibe como parámetro en otro valor que devuelve como resultado, y todo ello si utilizar información de sistemas externos a la propia función, es una ***función pura***.
-
-
-### Funciones impuras
-Se pueden crear funciones que no son puras, o sea que no realizan una transformación de un valor, o lo hacen accediendo a sistemas o variables externas. 
-
-Hay muchas tareas interesantes en un programa que no son simplemente transformaciones en sentido matemático: Mostrar algo en pantalla, escribir en un archivo, descargar un archivo de internet, etc., 
-Este tipo de funciones, que podemos llamar *procedimientos* o *subrutinas*, no tienen por qué recibir parámetros o devolver un valor.
-
-Por ejemplo, la siguiente función muestra la fecha en la consola:
+Ejemplos:
 
 ```js
-function mostrarFecha() {
-    var months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 
-        'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-    var weekDays = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 
-        'sábado', 'domingo'];
 
-    var today = new Date();
-
-    var weekDay = weekDays[ today.getDay() ];
-    var monthDay = today.getDate();
-    var month = months[ today.getMonth() ];
-    var year = today.getFullYear();
-
-    console.log('Hoy es ' + weekDay + ' ' + monthDay + ' de ' + month + ' de ' + year);
+function aplicarImpuestos(baseImponible, iva, irpf) {
+    return baseImponible * ( 1 + iva/100 - irpf/100);
 }
 
-mostrarFecha();
-```
+totalFactura = aplicarImpuestos(1000, 21, 18);
 
-Esta función utiliza dos sistemas externos a ella: el que permite obtener la fecha del ordenador mediante el uso del objeto `Date` y el que permite mostrar texto en la consola a través del objeto `console` y su método `log`.
-
-[aside t="clarify"]  
-
-La expresión 'new Date()` que utiliza el ejemplo es un poco especial y no la hemos visto todavía. Básicamente crea un objeto fecha.
-
-`new` se utiliza para invocar la función constructora de un prototipo de objeto para crear copias del mismo. En este caso la del objeto `Date`.  Hablaremos más adelante de `new`y de los prototipos de objeto.
-
-También conviene que sepas que `Date` no forma parte del lenguaje javascript, sino que forma parte de una de las librerías que Node.js (o cualquier navegador) pone a nuestra disposición directamente, como `Math` o `console`.
-
-[/aside]
-
-
-Sin entrar en demasiado detalle, te diré que la distinción entre funciones puras y subrutinas es importante, pero demasiado sutil como para preocuparnos demasiado por ella en este momento. 
-Una función pura siempre se puede copiar tal cual en otro programa y funcionará a la primera, porque no depende de ningún factor externo.
-
-
-[aside t="in-depth"]
-Usar sistemas externos a nuestro programa, como acceder a un dispositivo de salida (la pantalla en este caso) es, para muchos la única excusa para usar funciones impuras.
-Es muy fácil, y puede parecer útil, acabar escribiendo la función `aplicarImpuestos()` de esta forma:
-
-```js
-var iva = 21;
-var irpf = 18;
-// ...
-
-function aplicarImpuestos(totalFactura) {
-    return cantidad * ( 1 + iva - irpf);
+function saludar() {
+    console.log("Hola, hoy va a ser un gran día");
 }
 
-var totalFactura_1 = aplicarImpuestos(1000);  // 1030
-var totalFactura_2 = aplicarImpuestos(340);   // 350.2
-var totalFactura_3 = aplicarImpuestos(2735);  // 2817.05
-```
-De esta forma `iva` e `irpf` son accesibles a otras funciones que podrían modificar esos porcentajes, porque pueden cambiar con el tiempo.
-Ahora `aplicarImpuestos` es impura, porque depende de dos valores variables que no recibe como parámetro. Esto la hace impredecible en cierta manera. En dos momentos diferentes de la ejecución del programa podría valores diferentes si entre medias se han modificado los valores de `iva` e `irpf`.
-Puede no parecer muy preocupante en este ejemplo sencillo, pero a medida que nuestros programas se hacen más complejos usar funciones no puras complica la tarea de gestionar, mantener y buscar posibles errores en el código.
+saludar();
 
-Es cierto que es imposible escribir programas útiles sin usar sistemas externos, es decir, sin usar funciones impuras. Sin embargo, como consejo general intenta crear funciones impuras solo para lo que sea necesario. 
-En este caso, podemos mantener `iva` e `irpf` definidas fuera de la función y al hacer la función pura si pasamos como parámetro estos dos valores:
 
-```js
-var iva = 21;
-var irpf = 18;
-// ...
-
-function aplicarImpuestos(totalFactura, ivaAct, irpfAct) {
-    return cantidad * ( 1 + ivaAct - irpfAct);
+function obtenerHoraActual() {
+    var fecha = new Date();
+    var horas = fecha.getHours();
+    var minutos = fecha.getMinutes();
+    var segundos = fecha.getSeconds();
+    return horas + ":" + minutos + ":" + segundos;
 }
 
-var totalFactura_1 = aplicarImpuestos(1000, iva, irpf);  // 1030
-var totalFactura_2 = aplicarImpuestos(340, iva, irpf);   // 350.2
-var totalFactura_3 = aplicarImpuestos(2735, iva, irpf);  // 2817.05
+console.log( obtenerHoraActual() );
+
 ```
 
-[/aside]
+![](imgs/funciones/function_basics.png)
+
+
+
+### EJERCICIOS
+
+
+## 5. Reglas de ámbito (1ª parte)
+
+* Donde definir las funciones
+    - [ ] Da igual antes o después de usarlas
+        - [ ] Pero cuidado veremos que hay otras formas de declarar funciones que no permiten esta flexibilidad, aunque tendrán sus propias ventajas
+* Que variables pueden usar:
+    - [ ] De momento nos quedamos con que una función sólo puede acceder a las variables que están definidas dentro de ella misma.
+    - [ ] Hay mas chicha con ámbitos anidados -> para el tema siguiente
 
 
 
 
-## Ejercicios
 
+
+
+## 6.- Ejercicios del tema
 1. 7 y media
 2. Black jack
 3. 3 en raya
+

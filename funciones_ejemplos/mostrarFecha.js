@@ -16,3 +16,24 @@ function mostrarFecha() {
 }
 
 mostrarFecha();
+
+
+
+function obtenerHoraActual() {
+    var fecha = new Date();
+    var horas = fecha.getHours();
+    if (horas < 10) {
+        horas = "0" + horas;
+    }
+    var minutos = fecha.getMinutes();
+    if (minutos < 10) {
+        minutos = "0" + minutos;
+    }
+    var segundos = fecha.getSeconds();
+    if (segundos < 10) {
+        segundos = "0" + segundos;
+    }
+    return horas + ":" + minutos + ":" + segundos;
+}
+
+console.log( obtenerHoraActual() );

@@ -4,11 +4,12 @@ TODO:
 * Lo básico
     - [x] Reutilización
     - [x] Llamar, ejecutar, invocar
-    - [ ] Anatomía de una función  
-        - [ ] Parámetros, argumentos y valores de retorno
+    - [x] Anatomía de una función  
+        - [x] Parámetros, argumentos y valores de retorno
             - [x] Funciones con uno y varios parámetros
-            - [ ] Valores de retorno
-            - [ ] Devolver y console.log()
+            - [x] Valores de retorno
+            - [x] Devolver y console.log()
+        - [x] Revisión y resumen
     - [ ] Ámbito  
         - [ ] Definir funciones al principio o al final da lo mismo
         - [ ] ambito de variables sin anidar
@@ -36,7 +37,9 @@ En este capítulo empezamos desde cero, y sentaremos las bases para llegar a ent
     - [Funciones con más de un parámetro](#funciones-con-más-de-un-parámetro)
     - [Ejercicios de funciones con parámetros](#ejercicios-de-funciones-con-parámetros)
 - [4.- Funciones que devuelven un valor](#4--funciones-que-devuelven-un-valor)
-    - [Recapitulación](#recapitulación)
+- [Revisión y síntesis](#revisión-y-síntesis)
+    - [Para qué sirven las funciones](#para-qué-sirven-las-funciones)
+    - [Cómo se define y cómo se ejecuta una función](#cómo-se-define-y-cómo-se-ejecuta-una-función)
     - [EJERCICIOS](#ejercicios)
 - [5. Reglas de ámbito (1ª parte)](#5-reglas-de-ámbito-1ª-parte)
     - [Reglas de ámbito para variables.](#reglas-de-ámbito-para-variables)
@@ -547,9 +550,137 @@ Una vez más, usar console.log() no tiene nada que ver con devolver un valor.
 
 Crear funciones, en cierto modo, es añadir vocabulario al lenguaje de programación. Un vocabulario que nos ayuda a escribir y entender la lógica del programa. Por eso es tan importante que elijas bien el nombre de tus funciones. Si haces esto bien, no tendrás que ir a buscar la definición de cada función, para ver que hace, cuando la veas escrita en una línea del programa.
 
+Ahora que hemos completado el círculo y sabemos como devolver parámetros, podemos reescribir nuestro programa de *log in* y *logo out* de una forma mucho más funcional:
 
-### Recapitulación
+```js
+'use strict';
+var nombreUsuario = process.argv[2]; 
+var clave = process.argv[3]; 
+var usuariosRegistrados = [
+    { nombre: "Oscar",  clave: "1234" },
+    { nombre: "Lala",  clave: "lalala" },
+    { nombre: "Pepe",  clave: "pepegrillo" },
+    { nombre: "Carlos",  clave: "#@p4raN0iCo" }
+];
 
+
+// PROGRAMA PRINCIPAL  //////////////////////////////////////////////////////////////
+// Habla sólo de que hay que hacer, no de como hacerlo ===>>> Muy fácil de entender!!
+
+if (esUsuarioAcreditado(nombreUsuario, clave, usuariosRegistrados)) {
+    saludar(nombreUsuario);
+    // Algo de código realmente útil aquí
+    despedirse(nombreUsuario);
+else {
+    echarDelPrograma(nombreUsuario);
+}
+
+// /////////////////////////////////////////////////////// FIN DEL PROGRAMA PRINCIPAL
+
+
+// Definición de funciones
+// i.e. Vocabulario específico de nuestro programa
+
+function saludar(usuario) {
+    console.log("¡Buenos días, " + usuario + "!");
+    console.log("Hoy hace un día precioso ¿No crees?");
+}
+
+function despedirse(usuario) {
+    console.log("¿Ya te vas, " + usuario + "?");
+    console.log("Bueno, ha sido un placer, hasta pronto!");
+}
+
+function echarDelPrograma(usuario) {
+    console.log("Usuario o contraseña no reconocidos.\nAcceso denegado!!!");
+        process.exit();
+}
+
+function esUsuarioAcreditado(nombre, clave, usuarios) {
+    var puedeEntrar = false;
+    var idx = 0; // contador para el índice del array de usuarios
+    do {
+        var usuario = usuarios[idx];
+        if (nombre == usuario.nombre) {
+            if (clave == usuario.clave) {
+                puedeEntrar = true;
+            }
+        }
+        idx++;
+    } while (!puedeEntrar && idx < usuarios.length)
+
+    return puedeEntrar;
+}
+```
+
+En este listado he hecho varios cambios que pueden haberte despistado, pero sigue conmigo hay buenas razones que los justifican.
+
+Fijémonos primero en los que tienen que ver con devolver un valor en una función.
+En primer lugar he sacado de `esUsuarioAcreditado` los mensajes a consola informando de que el nombre de usuario o la contraseña son erróneas, y he creado otra función que hace eso mismo.  
+Además, ahora `esUsuarioAcreditado` devuelve un valor *booleano* de forma que pueda ser utilizado en la lógica de decisión de lo que llamo *programa principal* en los comentarios.
+
+Esto es más importante de lo que puedas creer. Ahora, si lees el *programa principal* sabes lo que hace el programa. De hecho con la ayuda que supone haber puesto nombres realmente descriptivos a nuestras funciones, se lee casi como si fuera pseudo-código:
+
+* Si nombre y contraseña son correctos
+    * Muestra un mensaje de saludo
+    * Haz algo realmente útil (esta parte nos la imaginamos, como ya hemos dicho)
+    * Termina mostrando un mensaje de despedida
+* Si no lo son, 
+    * Echa al usuario del programa.
+
+¿No es fantástico? Tener una parte del programa que describe claramente lo que hace, relegando los detalles a los bloques de código de las funciones a las que llama facilita enormemente su comprensión.
+
+Y cada función se ocupa exclusivamente de hacer lo que su nombre indica, sin tener que mirar ninguna otra parte del programa para comprender su funcionamiento.
+
+
+El otro cambio que he realizado es reordenar el código, utilizando una característica de las funciones de la que aún no te he hablado. 
+
+[aside t="important" cb="false"]
+
+No importa en que parte del código esté definida una función (al principio, al final, por el medio). Si está definida se puede invocar desde cualquier parte.
+
+[/aside]
+
+[aside t="warning" label="Si están en el mismo *ámbito*"]
+
+Lo anterior es cierto siempre que llamada y definición estén dentro del mismo ámbito (veremos más adelante lo que esto significa)
+[/aside]
+
+Teniendo en cuenta esto, podemos ordenar el código de forma que la descripción de lo que hace el programa aparezca lo primero. O casi, las variables hay que definirlas y asignarlas antes de utilizarlas así que esa sección del código no se puede reubicar libremente.
+
+No sé si te has dado cuenta, pero este es el punto culminante del capítulo sobre las funciones, todos los ejemplos y explicaciones que te he dado pretendían ser las migas de pan en el bosque que marcaban el camino hasta este punto, en el que espero que hayas conmprendido el como y el por qué de las funciones.
+
+Quedan muchos detalles que aprender sobre este tema, pero esto es la esencia. Probablemente es lo más difícil de aprehender, así que vamos a hacer un poco de síntesis.
+
+
+## Revisión y síntesis
+
+Hemos analizado la definición y uso de las funciones separándolas en tres casos diferentes: sin parámetros ni valores de retorno, con parámetros y con valores de retorno.
+El objetivo era facilitar la comprensión de lo que es en esencia una función, el uso de parámetros y de los valores de retorno sin tener que pensar en todo lo demás al mismo tiempo. Pero los programadores pensamos en las funciones como un todo, no como casos particulares, así que voy a reformular en sentido general los conceptos y definiciones más importantes que hemos visto hasta ahora.
+
+### Para qué sirven las funciones
+
+[aside t="important" cb="false"]
+
+Las funciones, en cuanto a su razón de ser, cumplen estos tres objetivos:
+
+1. Encapsulan comportamiento complejo y le dan nombre.
+2. Permiten reutilizar ese comportamiento tantas veces como sea necesario, sin tener que reescribirlo, simplemente llamando a la función por su nombre.
+3. Añaden nuevo vocabulario al lenguaje, adaptado al problema particular que estás resolviendo y permitiendo escribir el programa principal de forma descriptiva.
+
+[/aside]
+
+Muchos libros hablan de 1 y 2 como los objetivos clave de las funciones, yo mismo he pensado que lo eran durante mucho tiempo, pero ahora sé que el punto 3 es el más beneficioso cuando resuelves un problema complejo. Especialmente si le pones buenos nombres a tus funciones.
+
+De este modo hay una parte de tu código que se dedica a resolver el problema principal de una manera descriptiva, invocando funciones que ya has definido. Esto facilita enormemente razonar sobre el problema, sin tener que pensar en los pequeños detalles (que pueden ser muchos), de forma que no perdamos de vista el objetivo fundamental del programa.
+
+Esto enlaza con la idea de que no escribimos código para la máquina. La máquina usa nuestro código, sí. Pero nosotros escribimos código para nosotros mismos, para que sea fácil entender como resolver el problema en el proceso de resolverlo, para entender como lo hemos hecho cuando revisemos el código en el futuro, y para que otros lo entiendan cuando tengan que usarlo o modificarlo.
+
+### Cómo se define y cómo se ejecuta una función
+
+![Definición de funciones](http://newbeforever.local/wp-content/uploads/2018/02/Funciones_definicion.png)
+
+[aside t="important" cb="false"]
 
 **Para definir una función**:
 
@@ -559,9 +690,12 @@ Crear funciones, en cierto modo, es añadir vocabulario al lenguaje de programac
     Si queremos que la función reciba valores de entrada, escribiremos el nombre de los parámetros que los reciben entre estos paréntesis y separados por comas.
 * Abrimos una llave, `{`.
 * Escribimos el bloque de código que queremos que se ejecute cuando llamemos a la función. 
-  Recuerda añadir un margen adicional (un tabulador) a la izquierda de todas las sentencias que escribas dentro de este bloque. Así te será más fácil distinguir que código se ejecutará cuando llames a la función
+  Recuerda añadir un margen adicional (un tabulador) a la izquierda de todas las sentencias que escribas dentro de este bloque. Así te será más fácil distinguir qué código se ejecutará cuando llames a la función
 * Cerramos el bloque cerrando la llave `}`.
 
+[/aside]
+
+[aside t="important" cb="false"]
 **Para ejecutar una funcíón** escribimos su nombre seguido de paréntesis,`()`. 
 
 * Si la función tiene parámetros definidos y no le pasamos valores, esos parámetros tomarán el valor `undefined`
@@ -569,7 +703,7 @@ Crear funciones, en cierto modo, es añadir vocabulario al lenguaje de programac
 * El valor que devuelve la función (`undefined` si no devolvemos uno explícitamente con una sentencia `return ...`) reemplazará el lugar que ocupa la llamada a la función y será evaluado en ese contexto.  
     Por ejemplo: Si la llamada a la función está a la derecha de una expresión de asignación el valor devuelto por la función será asignado a la variable.
 
-
+[/aside]
 Ejemplos:
 
 ```js
